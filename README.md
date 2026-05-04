@@ -1,6 +1,6 @@
 # Exploiting All Ancilla Outcomes in Linear Combinations of Unitaries
 
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20024365-blue)](hhttps://doi.org/10.5281/zenodo.20024365)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20024365-blue)](https://doi.org/10.5281/zenodo.20024365)
 
 This repository contains the simulation code for the paper
 
