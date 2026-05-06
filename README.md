@@ -4,7 +4,7 @@
 
 This repository contains the simulation code for the paper
 
-> **"Exploiting all ancilla outcomes in linear combinations of unitaries: low‑rank recovery and quantum trapdoor functions"** [pdf from research gate](https://www.researchgate.net/publication/404400359_Exploiting_all_ancilla_outcomes_in_linear_combinations_of_unitaries_low-rank_recovery_and_quantum_trapdoor_functions) 
+> **"Exploiting all ancilla outcomes in linear combinations of unitaries: low‑rank recovery and quantum trapdoor functions"** [pdf from research gate](https://www.researchgate.net/publication/404400359_Exploiting_all_ancilla_outcomes_in_linear_combinations_of_unitaries_low-rank_recovery_and_quantum_trapdoor_functions) [arxiv](https://doi.org/10.48550/arXiv.2605.02986)
 > *Ammar Daskin* (2026)
 
 The code reproduces the numerical experiments of Section 4, comparing singular value projection (SVP) and factorized recovery of the full output matrix \(\Phi\) from partial and noisy observations.
