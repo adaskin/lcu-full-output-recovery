@@ -1,7 +1,8 @@
+import os
+import sys
 import numpy as np
 from numpy.linalg import svd, norm, solve
 from scipy.linalg import hadamard as hadamard_scipy
-import matplotlib.pyplot as plt
 from quantum_circuit import AlternativeLCU
 
 # ----------------------------------------------------------------------
@@ -55,7 +56,7 @@ def svp_recovery(observed, mask, K, max_iter=200):
 # ----------------------------------------------------------------------
 # Parameters
 K = 4
-n_sys = 8                # N = 256
+n_sys = int(sys.argv[1]) if len(sys.argv) > 1 else 8   # system qubits, N = 2**n_sys
 N = 2**n_sys
 max_iter = 200
 
@@ -129,26 +130,8 @@ for i, nl in enumerate(noise_levels):
 
 # ----- Plot -----
 # Plot
-plt.rcParams.update({
-'figure.figsize': (7, 5), 'font.size': 14, 'axes.labelsize': 14,
-'axes.titlesize': 14, 'legend.fontsize': 12, 'xtick.labelsize': 14,
-'ytick.labelsize': 14, 'lines.linewidth': 2, 
-'savefig.dpi': 300, 'savefig.bbox': 'tight', 'text.usetex': False,
-})
-plt.figure(figsize=(8,5))
-plt.errorbar(noise_levels, mean_svp_Phi, yerr=std_svp_Phi, fmt='o-', capsize=3, label='SVP Φ')
-plt.errorbar(noise_levels, mean_svp_phi, yerr=std_svp_phi, fmt='s--', capsize=3, label='SVP φ')
-plt.errorbar(noise_levels, mean_fac_Phi, yerr=std_fac_Phi, fmt='d-', capsize=3, label='Factorized Φ')
-plt.errorbar(noise_levels, mean_fac_phi, yerr=std_fac_phi, fmt='x--', capsize=3, label='Factorized φ')
-plt.xscale('log')
-plt.yscale('log')
-plt.xlabel('Noise standard deviation (σ)')
-plt.ylabel('Relative error')
-plt.legend()
-plt.grid(True, alpha=0.3)
-plt.title(f'Shot‑noise recovery (obs. frac={observation_fraction}) '
-          f'K={K}, N={N}, {ntrials} trials × {nmask} masks')
-plt.tight_layout()
-plt.savefig(f'recovery_svp_vs_factorized_noisy_maskK{K}-N{N}.pdf')
-plt.savefig(f'recovery_svp_vs_factorized_noisy_maskK{K}-N{N}.png')
-plt.show()
+os.makedirs('data', exist_ok=True)
+np.savez(f'data/results_noise_K{K}_N{N}.npz', x=noise_levels,
+         svp_Phi=mean_svp_Phi, svp_Phi_std=std_svp_Phi, svp_phi=mean_svp_phi, svp_phi_std=std_svp_phi,
+         fac_Phi=mean_fac_Phi, fac_Phi_std=std_fac_Phi, fac_phi=mean_fac_phi, fac_phi_std=std_fac_phi)
+# figures: python3 plot_recovery_figures.py
