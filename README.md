@@ -11,7 +11,6 @@ It contains a research report with the main findings and their status, the scrip
 
 ## Contents
 
-- `RESEARCH_REPORT.md` – findings with their status (proved / checked / conjecture / open), what is and is not claimed, open problems.
 - `theory_checks/` – verification scripts (numpy only): `verify_identities.py` (outcome formulas, frame, Walsh diagonalisation, real-amplitude conditions, block-unitary view), `apn_design.py` (APN phase register, Appendix B), `fisher_bound_check.py`, `k_resolved_variance.py`, `secret_mixing_*.py` and `complex_identifiability_multistart.py` (attack and identifiability evidence), `gram_shot_cost_check.py`.
 - `quantum_circuit.py` – `AlternativeLCU` class that builds the Hadamard‑mixed model circuit (PennyLane) and computes the exact output matrix.
 - `lcu_recovery.py`, `lcu_recovery_noisy.py` – recovery experiments (SVP vs. factorized recovery of the output matrix \(\Phi\) in the amplitude-access model); `data/` holds their results; `plot_recovery_figures.py` produces the figures in `figures/`.
